@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">s185178_Lykkehjulet</string>
+
+    <string name="word_display">_ _ _ _ _</string>
+    <string name="point_score">xxxx</string>
+    <string name="life_score">x</string>
+</resources>
