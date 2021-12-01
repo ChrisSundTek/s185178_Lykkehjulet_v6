@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/start_screen">
+    <fragment
+        android:id="@+id/start_screen"
+        android:name="com.example.s185178lykkehjuletv6.Fragments.start_screen"
+        android:label="start_screen_fragment"
+        tools:layout="@layout/start_screen_fragment" >
+        <action
+            android:id="@+id/action_start_screen_to_game_playing"
+            app:destination="@id/game_playing" />
+    </fragment>
+    <fragment
+        android:id="@+id/game_won"
+        android:name="com.example.s185178lykkehjuletv6.Fragments.game_won"
+        android:label="game_won_fragment"
+        tools:layout="@layout/game_won_fragment" />
+    <fragment
+        android:id="@+id/game_playing"
+        android:name="com.example.s185178lykkehjuletv6.Fragments.game_playing"
+        android:label="game_playing_fragment"
+        tools:layout="@layout/game_playing_fragment" >
+        <action
+            android:id="@+id/action_game_playing_to_game_won"
+            app:destination="@id/game_won" />
+        <action
+            android:id="@+id/action_game_playing_to_game_lost"
+            app:destination="@id/game_lost" />
+    </fragment>
+    <fragment
+        android:id="@+id/game_lost"
+        android:name="com.example.s185178lykkehjuletv6.Fragments.game_lost"
+        android:label="game_lost_fragment"
+        tools:layout="@layout/game_lost_fragment" />
+</navigation>
