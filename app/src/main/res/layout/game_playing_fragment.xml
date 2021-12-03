@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/point_score"
         android:textColor="@color/black"
         android:textSize="22sp"
@@ -38,7 +38,7 @@
         android:id="@+id/lifes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
         android:text="Lifes:"
         android:textColor="@color/black"
@@ -52,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:text="@string/life_score"
         android:textColor="@color/black"
         android:textSize="22sp"
@@ -64,14 +64,15 @@
         android:id="@+id/Wheel_text"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:text="Result from spinning wheel:"
+        android:layout_marginTop="20dp"
+        android:text="@string/result_from_spinning_wheel"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/life_score" />
 
-    <TextView
+ <!--   <TextView
         android:id="@+id/Wheel_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -81,7 +82,7 @@
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/score" />
+        app:layout_constraintTop_toBottomOf="@id/score" />-->
 
 
     <!--<ImageView
@@ -94,7 +95,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lifes" />-->
 
-    <Button
+<!--    <Button
         android:id="@+id/spinner"
         android:layout_width="wrap_content"
         android:layout_height="55dp"
@@ -102,7 +103,7 @@
         android:text="Spin the wheel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Wheel_result" />
+        app:layout_constraintTop_toBottomOf="@id/Wheel_result" />-->
 
     <TextView
         android:id="@+id/word"
@@ -153,11 +154,20 @@
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
-        android:text="Guess letter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/input_field" />
+    <!--android:text="Guess letter"-->
+    <!-- TEXT on button has been removed here and added in viewModel -->
 
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Guess" />
     <!--&lt;!&ndash; Button and word display source is:
       https://ssaurel.medium.com/develop-a-hangman-game-for-android-7794420c11bf &ndash;&gt;
 

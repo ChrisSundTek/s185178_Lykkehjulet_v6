@@ -5,4 +5,5 @@
     <string name="point_score">xx</string>
     <string name="life_score">x</string>
     <string name="congrats">Congrats</string>
+    <string name="result_from_spinning_wheel">Result from spinning wheel:</string>
 </resources>

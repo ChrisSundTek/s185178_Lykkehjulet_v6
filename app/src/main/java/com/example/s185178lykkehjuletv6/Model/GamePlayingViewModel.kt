@@ -1,9 +1,11 @@
 package com.example.s185178lykkehjuletv6.Model
 
+import android.widget.TextView
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import com.example.s185178lykkehjuletv6.R
 import com.example.s185178lykkehjuletv6.Words.Capitals
 import com.example.s185178lykkehjuletv6.Words.Countries
 import com.example.s185178lykkehjuletv6.Words.categories
@@ -24,9 +26,9 @@ class GamePlayingViewModel : ViewModel() {
     lateinit var guessWord : String
 
     // Setting the users start values
-    private val _lives = MutableLiveData(5)
+    private val _lifecount = MutableLiveData(5)
     val lives: LiveData<Int>
-        get() = _lives
+        get() = _lifecount
 
     private val _score = MutableLiveData(0)
     val score: LiveData<Int>
@@ -53,9 +55,9 @@ class GamePlayingViewModel : ViewModel() {
         WordToFind = categoryList.random()
 
         val builder = StringBuilder()
-       /* for (i in WordToFind.indices){
+        for (i in WordToFind.indices){
             builder.append("-")
-        }*/
+        }
         guessWord = builder.toString()
     }
 
@@ -68,6 +70,16 @@ class GamePlayingViewModel : ViewModel() {
 
         WordToBeGuessed()
         println("")
+    }
+
+    //Defining Lifescore start
+    fun startLifeScore(amount: Int){
+        _lifecount.value = amount
+    }
+    //Making a lifescore class to update
+
+    fun LifeScore(amount: Int){
+        _lifecount.value =(_lifecount.value)?.plus(amount)
     }
 
     fun LetterGuessed(inputLetter : Char) :Boolean{
@@ -84,8 +96,9 @@ class GamePlayingViewModel : ViewModel() {
     }
 
     //Taken inspiration from a Dice roll simulation we made earlier this semester
+    //Added true false state to add bankrupt to the wheel
     fun WheelSimulation(isPlayerBankrupt : Boolean) {
-
+// TODO: CHANGE HOW RADOM VALUE IS CHOOSEN
         if(isPlayerBankrupt == TRUE){
             _score.value = 0
         }
@@ -102,33 +115,34 @@ class GamePlayingViewModel : ViewModel() {
                 7 -> _score.value = (_score.value)?.plus(1600)
                 8 -> _score.value = (_score.value)?.plus(1800)
                 9 -> _score.value = (_score.value)?.plus(2000)
+                //10 -> _lifecount.value =(_lifecount.value)?.plus(-1)
+                //11 -> _lifecount.value = (_lifecount.value)?.plus(+1)
+                //Implemented life count update to the spinWheel
             }
         }
     }
 
-
-    fun LifeScore(amount: Int){
-        _lives.value =(_lives.value)?.plus(amount)
-    }
-
-    fun startLifeScore(amount: Int){
-        _lives.value = amount
-    }
-
-
+    /*class Dice(val numSides: Int) {
+        fun rolling(): Int {
+            return (1..numSides).random()
+        }
+    }*/
+    //Code above have been used to inspire spinWheel (code is from dice assingment made earlier this semester)
+    //Would have liked to get all 9 values above worked in together with this but haven't managed
     fun spinWheel() : String {
-        val rand = (0.. spinWheelTypes.values().size-1).random()
-        val wheelResult = spinWheelTypes.values()[rand]
+        val randomizer = (0.. WheelResult.values().size-1).random()
+        val wheelResult = WheelResult.values()[randomizer]
 
         when (wheelResult){
-            spinWheelTypes.INCREASE_SCORE -> WheelSimulation(FALSE)
-            spinWheelTypes.BANKRUPT       -> WheelSimulation(TRUE)
-            spinWheelTypes.INCREASE_LIFE -> LifeScore(1)
-            spinWheelTypes.DECREASE_LIFE  -> LifeScore(-1)
+            WheelResult.INCREASE_LIFE -> LifeScore(1)
+            WheelResult.DECREASE_LIFE  -> LifeScore(-1)
+            WheelResult.INCREASE_SCORE -> WheelSimulation(FALSE)
+            WheelResult.BANKRUPT -> WheelSimulation(TRUE)
         }
 
-        return wheelResult.description
+        return wheelResult.Text
     }
+
 
     private fun showLetter(playerLetter: Char) {
         for (i in WordToFind.indices){
@@ -138,7 +152,7 @@ class GamePlayingViewModel : ViewModel() {
         }
     }
 
-    fun wordisGuessed() : Boolean{
+    fun wordIsGuessed() : Boolean{
         if(guessWord.uppercase() == WordToFind.uppercase()){
             return true
         }
@@ -147,11 +161,11 @@ class GamePlayingViewModel : ViewModel() {
 
 }
 
-enum class spinWheelTypes(val description : String){
-    INCREASE_SCORE("Du får flere point!"),
-    INCREASE_LIFE ("Du har fået et ekstra liv"),
-    BANKRUPT ("Du er gået fallit"),
-    DECREASE_LIFE("Du har mistet et liv")
+enum class WheelResult(val Text : String){
+    INCREASE_SCORE("+"),
+    INCREASE_LIFE ("Gained a extra life"),
+    DECREASE_LIFE("You lost a life"),
+    BANKRUPT ("You bankrupt"),
 }
 
 

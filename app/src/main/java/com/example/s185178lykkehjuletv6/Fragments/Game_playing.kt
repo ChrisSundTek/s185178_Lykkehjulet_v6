@@ -13,7 +13,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.s185178lykkehjuletv6.Model.GamePlayingViewModel
 import com.example.s185178lykkehjuletv6.R
 import com.example.s185178lykkehjuletv6.databinding.GamePlayingFragmentBinding
-import com.google.android.material.snackbar.Snackbar
 import java.lang.Boolean.FALSE
 import java.lang.Boolean.TRUE
 
@@ -37,7 +36,7 @@ class Game_playing : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.Guess.setOnClickListener {
-            val unknownWord: String = binding.inputField.text.toString()
+            binding.inputField.text.toString()
         }
 
         binding.Guess.setOnClickListener {
@@ -61,8 +60,10 @@ class Game_playing : Fragment() {
         updatescoreandlifecount()
     }
 
-
+// Code inspired from https://developer.android.com/codelabs/kotlin-android-training-live-data#3
     private fun updatescoreandlifecount() {
+        binding.pointScore.text = viewModel.score.value.toString()
+        binding.WheelText.text = viewModel.spinWheel()
         (viewModel.lives.value.toString()).also { binding.lifeScore.text = it }
         (viewModel.score.value.toString()).also { binding.pointScore.text = it }
         binding.word.text = viewModel.guessWord
@@ -71,6 +72,7 @@ class Game_playing : Fragment() {
 
 //Implemented a double button instead https://developer.android.com/guide/topics/ui/controls/togglebutton
         if (_guessTheWord) {
+            //binding.Guess.visibility = View.INVISIBLE
             binding.Guess.visibility = View.VISIBLE
             binding.Guess.text = "Spin the wheel"
 
@@ -84,10 +86,8 @@ class Game_playing : Fragment() {
         findNavController().navigate(R.id.action_game_playing_to_game_won)
     }
 
- /*   *//**
-     * Used to restart the game
-     *//*
-    private fun restartGame() {
+ // Restart game and then call StartGame to reset values
+ /*   private fun restartGame() {
         viewModel.StartGame()
         updatescoreandlifecount()
     }*/
@@ -100,7 +100,7 @@ class Game_playing : Fragment() {
         if (viewModel.lives.value!! <= 0) {
             findNavController().navigate(R.id.action_game_playing_to_game_lost)
         }
-        if (viewModel.wordisGuessed()) {
+        if (viewModel.wordIsGuessed()) {
             Winner()
         }
 
