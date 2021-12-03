@@ -235,8 +235,8 @@ val categories: List<String> =
 
     val Capitals: List<String> =
         listOf(
-            "Copenhagen",
-            "Stockholm",
-            "Oslo",
-            "Berlin",
+            "copenhagen",
+            "stockholm",
+            "oslo",
+            "berlin",
         )
