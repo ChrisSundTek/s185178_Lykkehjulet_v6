@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.game_won">
+    tools:context=".Fragments.game_won"
+    android:background="@color/Yellow_Green">
 
     <TextView
         android:id="@+id/text"

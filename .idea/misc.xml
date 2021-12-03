@@ -4,9 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Christoffer/StudioProjects/s185178Lykkehjuletv6/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/Christoffer/StudioProjects/s185178Lykkehjuletv6/app/src/main/res/layout/game_fragment.xml" value="0.1265625" />
         <entry key="..\:/Users/Christoffer/StudioProjects/s185178Lykkehjuletv6/app/src/main/res/layout/game_lost_fragment.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/Christoffer/StudioProjects/s185178Lykkehjuletv6/app/src/main/res/layout/game_lost_fragment2.xml" value="0.24230072463768115" />
         <entry key="..\:/Users/Christoffer/StudioProjects/s185178Lykkehjuletv6/app/src/main/res/layout/game_playing_fragment.xml" value="0.23777173913043478" />
+        <entry key="..\:/Users/Christoffer/StudioProjects/s185178Lykkehjuletv6/app/src/main/res/layout/game_playing_fragment2.xml" value="0.2418478260869565" />
         <entry key="..\:/Users/Christoffer/StudioProjects/s185178Lykkehjuletv6/app/src/main/res/layout/game_won.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/Christoffer/StudioProjects/s185178Lykkehjuletv6/app/src/main/res/layout/game_won_fragment.xml" value="0.1598731884057971" />
         <entry key="..\:/Users/Christoffer/StudioProjects/s185178Lykkehjuletv6/app/src/main/res/layout/in_game_fragment.xml" value="0.1793478260869565" />

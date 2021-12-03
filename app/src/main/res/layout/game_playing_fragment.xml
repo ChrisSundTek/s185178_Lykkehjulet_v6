@@ -5,22 +5,68 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.game_playing">
+    tools:context=".Fragments.Game_playing"
+    android:background="@color/Yellow_Green">
 
-    <!-- Button and word display source is:
-    https://ssaurel.medium.com/develop-a-hangman-game-for-android-7794420c11bf -->
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:text="Score:"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Didn't get the chance to implement buttons-->
+    <TextView
+        android:id="@+id/point_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/point_score"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/score"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lifes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:text="Lifes:"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintStart_toEndOf="@id/point_score"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/life_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/life_score"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/lifes"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/wheel"
-        android:layout_width="175dp"
-        android:layout_height="175dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/lifes" />
 
     <Button
         android:id="@+id/spinner"
@@ -54,57 +100,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <TextView
-        android:id="@+id/score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:text="Score:"
-        android:textColor="@color/black"
-        android:textSize="22sp"
+    <EditText
+        android:id="@+id/input_field"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:hint="Enter your letter"
+        android:inputType="text"
+        android:maxLength="1"
+        android:textAlignment="center"
+        android:textColor="@color/Olive_Green"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wordToFind" />
+        app:layout_constraintTop_toBottomOf="@id/wordToFind"/>
 
-    <TextView
-        android:id="@+id/point_score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/point_score"
-        android:textColor="@color/black"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/score"
-        app:layout_constraintTop_toBottomOf="@id/wordToFind" />
+    <Button
+        android:id="@+id/Guess"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:text="Guess letter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_field" />
 
-    <TextView
-        android:id="@+id/lifes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:text="Lifes:"
-        android:textColor="@color/black"
-        android:textSize="22sp"
-        app:layout_constraintStart_toEndOf="@id/point_score"
-        app:layout_constraintTop_toBottomOf="@id/wordToFind" />
+    <!--&lt;!&ndash; Button and word display source is:
+      https://ssaurel.medium.com/develop-a-hangman-game-for-android-7794420c11bf &ndash;&gt;
 
-    <TextView
-        android:id="@+id/life_score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/life_score"
-        android:textColor="@color/black"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/lifes"
-        app:layout_constraintTop_toBottomOf="@id/wordToFind" />
-
-
+    &lt;!&ndash; Didn't get the chance to implement buttons&ndash;&gt;
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -310,6 +332,6 @@
                 android:text="Z" />
         </LinearLayout>
 
-    </LinearLayout>
+    </LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

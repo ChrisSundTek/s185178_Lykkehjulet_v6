@@ -27,7 +27,7 @@
         android:src="@drawable/game_over"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text"/>
+        app:layout_constraintTop_toBottomOf="@id/text" />
 
     <Button
         android:id="@+id/Play_again"

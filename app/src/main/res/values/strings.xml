@@ -4,6 +4,4 @@
     <string name="word_display">_ _ _ _ _</string>
     <string name="point_score">xxxx</string>
     <string name="life_score">x</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
