@@ -4,8 +4,6 @@ package com.example.s185178lykkehjuletv6.Model
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-//import androidx.lifecycle.Transformations
-//import com.example.s185178lykkehjuletv6.R
 import com.example.s185178lykkehjuletv6.Words.Capitals
 import com.example.s185178lykkehjuletv6.Words.Countries
 import com.example.s185178lykkehjuletv6.Words.categories
@@ -76,12 +74,13 @@ class GamePlayingViewModel : ViewModel() {
     fun startLifeScore(amount: Int){
         _lifecount.value = amount
     }
-    //Making a lifescore class to update
 
+    //Making a lifescore class to update
     fun LifeScore(amount: Int){
         _lifecount.value =(_lifecount.value)?.plus(amount)
     }
 
+    //Implemented the different states a guess can have and the results from that
     fun LetterGuessed(inputLetter : Char) :Boolean{
         if(WordToFind.contains(inputLetter)){
             showLetter(inputLetter)
@@ -97,9 +96,9 @@ class GamePlayingViewModel : ViewModel() {
 
     //Taken inspiration from a Dice roll simulation we made earlier this semester
     //Added true false state to add bankrupt to the wheel
-    fun WheelSimulation(isPlayerBankrupt : Boolean) {
+    fun WheelSimulation(landedBankrupt : Boolean) {
 
-        if(isPlayerBankrupt == TRUE){
+        if(landedBankrupt == TRUE){
             _score.value = 0
         }
         else {
@@ -117,7 +116,7 @@ class GamePlayingViewModel : ViewModel() {
                 9 -> _score.value = (_score.value)?.plus(2000)
                 //10 -> _lifecount.value =(_lifecount.value)?.plus(-1)
                 //11 -> _lifecount.value = (_lifecount.value)?.plus(+1)
-                //Implemented life count update to the spinWheel
+                //Implemented life count update to the spinThatWheel
             }
         }
     }
@@ -127,9 +126,9 @@ class GamePlayingViewModel : ViewModel() {
             return (1..numSides).random()
         }
     }*/
-    //Code above have been used to inspire spinWheel (code is from dice assingment made earlier this semester)
+    //Code above have been used to inspire spinThatWheel (code is from dice assingment made earlier this semester)
     //Would have liked to get all 9 values above worked in together with this but haven't managed
-    fun spinWheel() : String {
+    fun spinThatWheel() : String {
         val randomizer = (0.. WheelResult.values().size-1).random()
         val wheelResult = WheelResult.values()[randomizer]
 
@@ -158,6 +157,7 @@ class GamePlayingViewModel : ViewModel() {
     }
 }
 
+//Private class which have the text string there will be showed after wheel have been spun
 enum class WheelResult(val Text : String){
     SCORE("+"),
     PLUS_LIFE ("Gained a extra life"),

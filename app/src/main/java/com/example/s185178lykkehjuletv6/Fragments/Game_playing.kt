@@ -1,14 +1,12 @@
 package com.example.s185178lykkehjuletv6.Fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.databinding.DataBindingUtil.*
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.s185178lykkehjuletv6.Model.GamePlayingViewModel
 import com.example.s185178lykkehjuletv6.R
@@ -61,16 +59,17 @@ class Game_playing : Fragment() {
     }
 
 // Code inspired from https://developer.android.com/codelabs/kotlin-android-training-live-data#3
+    @SuppressLint("SetTextI18n")
     private fun updatescoreandlifecount() {
         binding.pointScore.text = viewModel.score.value.toString()
-        binding.WheelText.text = viewModel.spinWheel()
+        binding.WheelText.text = viewModel.spinThatWheel()
         (viewModel.lives.value.toString()).also { binding.lifeScore.text = it }
-        //(viewModel.score.value.toString()).also { binding.pointScore.text = it }
         binding.word.text = viewModel.guessWord
         binding.catagory.text = viewModel.categoryString
         GameOver()
 
 //Implemented a double button instead https://developer.android.com/guide/topics/ui/controls/togglebutton
+    // import to stop issue with button text https://developer.android.com/reference/android/annotation/SuppressLint
         if (_guessTheWord) {
             binding.Guess.visibility = View.INVISIBLE
             binding.Guess.visibility = View.VISIBLE
@@ -91,7 +90,7 @@ class Game_playing : Fragment() {
         viewModel.StartGame()
         updatescoreandlifecount()
     }
-
+// Kept it because it was in the example https://developer.android.com/codelabs/kotlin-android-training-live-data#0
     private fun exitGame() {
         activity?.finish()
     }

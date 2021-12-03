@@ -12,6 +12,10 @@ import com.example.s185178lykkehjuletv6.databinding.ActivityMainBinding
 // My 6th Github file, others has been deleted because they kept crashing
 // and give me errors for no reason, so couldn't figure out why so had to delete and start over
 
+/*Code status:
+- Wheel have been implemented but it only picks from 4 values because the 9 other values is simulated in another loop
+when it has been tried to
+*/
 
 /**
  * Taken from word app guide https://github.com/google-developer-training/android-basics-kotlin-words-app/tree/activities
