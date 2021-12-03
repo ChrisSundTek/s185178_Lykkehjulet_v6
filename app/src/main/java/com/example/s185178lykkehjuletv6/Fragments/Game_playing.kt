@@ -1,59 +1,169 @@
 package com.example.s185178lykkehjuletv6.Fragments
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+import android.widget.TextView
+import androidx.databinding.DataBindingUtil.*
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.s185178lykkehjuletv6.Model.GamePlayingViewModel
 import com.example.s185178lykkehjuletv6.R
 import com.example.s185178lykkehjuletv6.databinding.GamePlayingFragmentBinding
+import com.google.android.material.snackbar.Snackbar
+import java.lang.Boolean.FALSE
+import java.lang.Boolean.TRUE
 
-
+// Code inspired by https://developer.android.com/codelabs/basic-android-kotlin-training-livedata#0 &
+//// https://github.com/google-developer-training/android-basics-kotlin-unscramble-app/blob/main/app/src/main/java/com/example/android/unscramble/ui/game/GameViewModel.kt
 class Game_playing : Fragment() {
+    private var _guessTheWord = FALSE
 
-    // Binding object instance with access to the views in the game_fragment.xml layout
     private lateinit var binding: GamePlayingFragmentBinding
-
-    // Create a ViewModel the first time the fragment is created.
-    // If the fragment is re-created, it receives the same GameViewModel instance created by the
-    // first fragment.
     private val viewModel: GamePlayingViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout XML file and return a binding object instance
-        binding = DataBindingUtil.inflate(inflater, R.layout.game_playing_fragment, container, false)
+        binding = GamePlayingFragmentBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Set the viewModel for data binding - this allows the bound layout access
-        // to all the data in the VieWModel
-        binding.
-        binding.GamePlayingViewModel = viewModel
-        binding.maxNoOfWords = MAX_NO_OF_WORDS
-        // Specify the fragment view as the lifecycle owner of the binding.
-        // This is used so that the binding can observe LiveData updates
-        binding.lifecycleOwner = viewLifecycleOwner
+        binding.Guess.setOnClickListener {
+            val unknownWord: String = binding.inputField.text.toString()
+        }
+
+        binding.Guess.setOnClickListener {
+
+            if (_guessTheWord) {
+                _guessTheWord = FALSE
+                updatescoreandlifecount()
+            } else {
+                val unknownWord: String = binding.inputField.text.toString()
+
+// .isNotEmpty taken from https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/is-not-empty.html
+                if (unknownWord.isNotEmpty() && unknownWord.length == 1) {
+
+                    val letter: Char = unknownWord.first()
+                    viewModel.LetterGuessed(letter)
+                }
+                _guessTheWord = TRUE
+                updatescoreandlifecount()
+            }
+        }
+        updatescoreandlifecount()
+    }
+
+
+    private fun updatescoreandlifecount() {
+        (viewModel.lives.value.toString()).also { binding.lifeScore.text = it }
+        (viewModel.score.value.toString()).also { binding.pointScore.text = it }
+        binding.word.text = viewModel.guessWord
+        binding.catagory.text = viewModel.categoryString
+        GameOver()
+
+//Implemented a double button instead https://developer.android.com/guide/topics/ui/controls/togglebutton
+        if (_guessTheWord) {
+            binding.Guess.visibility = View.VISIBLE
+            binding.Guess.text = "Spin the wheel"
+
+        } else {
+            binding.Guess.visibility = View.VISIBLE
+            binding.Guess.text = "Guess Letter"
+        }
+    }
+
+    private fun Winner() {
+        findNavController().navigate(R.id.action_game_playing_to_game_won)
+    }
+
+ /*   *//**
+     * Used to restart the game
+     *//*
+    private fun restartGame() {
+        viewModel.StartGame()
+        updatescoreandlifecount()
+    }*/
+
+    private fun exitGame() {
+        activity?.finish()
+    }
+
+    private fun GameOver() {
+        if (viewModel.lives.value!! <= 0) {
+            findNavController().navigate(R.id.action_game_playing_to_game_lost)
+        }
+        if (viewModel.wordisGuessed()) {
+            Winner()
+        }
+
+
+    }
+}
+
+/*
+    private var _canIGuess = FALSE
+
+    // Binding object instance with access to the views in the game_fragment.xml layout
+    private lateinit var binding: GamePlayingFragmentBinding
+    private val viewModel: GamePlayingViewModel by viewModels()
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        binding = inflate(inflater, R.layout.game_playing_fragment, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.guessWordButton.setOnClickListener {
+            val word : String = binding.inputField.text.toString()
+
+            if(word.isNotEmpty()){
+
+                if(viewModel.isUserWordCorrect(word)){
+                    showFinalScoreDialog()
+                }
+                _canIGuess = TRUE
+                update()
+            }
+        }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         // Setup a click listener for the Submit and Skip buttons.
-        binding.spinner.setOnClickListener { onSubmitWord() }
+        binding.spinner.setOnClickListener { SimulateWheel() }
         binding.spinner.setOnClickListener { onLetterGuessed() }
     }
 
-    /*
-    * Checks the user's word, and updates the score accordingly.
-    * Displays the next scrambled word.
-    * After the last word, the user is shown a Dialog with the final score.
-    */
+    private fun SimulateWheel() {
+        //Simulation is sat up like a dice roll (inspiration from class)
+        val wheel = Wheel(10)
+        val wheelSpin = wheel.spin()
+
+        val changingTextView: TextView = findViewById(R.id.Wheel_result)
+        changingTextView.text = wheel.spin.toString()
+
+
+    }
+
+    class Wheel(private val numsides: Int) {
+        fun spin(): Int {
+            return (1..numsides).random()
+        }
+
     private fun onLetterGuessed() {
         val playerWord = binding.inputField.text.toString()
 
@@ -67,9 +177,11 @@ class Game_playing : Fragment() {
         }
     }
 
-    /*
+    */
+/*
      * Creates and shows an AlertDialog with final score.
-     */
+     *//*
+
     private fun showFinalScoreDialog() {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.congratulations))
@@ -84,25 +196,31 @@ class Game_playing : Fragment() {
             .show()
     }
 
-    /*
+    */
+/*
      * Re-initializes the data in the ViewModel and updates the views with the new data, to
      * restart the game.
-     */
+     *//*
+
     private fun restartGame() {
         viewModel.reinitializeData()
         setErrorTextField(false)
     }
 
-    /*
+    */
+/*
      * Exits the game.
-     */
+     *//*
+
     private fun exitGame() {
         activity?.finish()
     }
 
-    /*
-    * Sets and resets the text field error status.
     */
+/*
+    * Sets and resets the text field error status.
+    *//*
+
     private fun setErrorTextField(error: Boolean) {
         if (error) {
             binding.textField.isErrorEnabled = true
@@ -113,23 +231,6 @@ class Game_playing : Fragment() {
         }
     }
 }
-    companion object {
-        fun newInstance() = Game_playing()
     }
 
-    private lateinit var viewModel: GamePlayingViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.game_playing_fragment, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(GamePlayingViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
-}
+}*/

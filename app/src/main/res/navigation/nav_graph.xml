@@ -17,10 +17,17 @@
         android:id="@+id/game_won"
         android:name="com.example.s185178lykkehjuletv6.Fragments.game_won"
         android:label="game_won_fragment"
-        tools:layout="@layout/game_won_fragment" />
+        tools:layout="@layout/game_won_fragment" >
+        <action
+            android:id="@+id/action_game_won_to_game_playing"
+            app:destination="@id/game_playing" />
+        <action
+            android:id="@+id/action_game_won_to_start_screen"
+            app:destination="@id/start_screen" />
+    </fragment>
     <fragment
         android:id="@+id/game_playing"
-        android:name="com.example.s185178lykkehjuletv6.Fragments.game_playing"
+        android:name="com.example.s185178lykkehjuletv6.Fragments.Game_playing"
         android:label="game_playing_fragment"
         tools:layout="@layout/game_playing_fragment" >
         <action
@@ -34,5 +41,12 @@
         android:id="@+id/game_lost"
         android:name="com.example.s185178lykkehjuletv6.Fragments.game_lost"
         android:label="game_lost_fragment"
-        tools:layout="@layout/game_lost_fragment" />
+        tools:layout="@layout/game_lost_fragment" >
+        <action
+            android:id="@+id/action_game_lost_to_game_playing"
+            app:destination="@id/game_playing" />
+        <action
+            android:id="@+id/action_game_lost_to_start_screen"
+            app:destination="@id/start_screen" />
+    </fragment>
 </navigation>

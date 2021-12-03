@@ -29,7 +29,7 @@ class start_screen : Fragment() {
         button.setOnClickListener(clickListener)
     }
     private fun StartGame(){
-        // Navigate to Profile
+        // Navigate to Game
         findNavController().navigate(R.id.action_start_screen_to_game_playing)
     }
 }
