@@ -1,14 +1,14 @@
 package com.example.s185178lykkehjuletv6.model
 
-//import android.widget.TextView
+/* import android.widget.TextView */
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import java.lang.Boolean.*
 import com.example.s185178lykkehjuletv6.words.Capitals
 import com.example.s185178lykkehjuletv6.words.Countries
 import com.example.s185178lykkehjuletv6.words.categories
-import java.lang.Boolean.FALSE
-import java.lang.Boolean.TRUE
+
 
 //View model taken inspiration from:
 // https://github.com/google-developer-training/android-basics-kotlin-unscramble-app/blob/main/app/src/main/java/com/example/android/unscramble/ui/game/GameViewModel.kt
