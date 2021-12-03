@@ -7,14 +7,18 @@ import androidx.navigation.NavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.s185178lykkehjuletv6.databinding.ActivityMainBinding
 
-//Gruppe G2 hvor vi har brugt meget tid på gruppe opgaven
+//Gruppe G2 hvor vi har brugt meget tid på gruppe opgaven (aftale at skrive dette med Josefine)
 
 // My 6th Github file, others has been deleted because they kept crashing
 // and give me errors for no reason, so couldn't figure out why so had to delete and start over
 
-/*Code status:
+/*Code status when I finished:
 - Wheel have been implemented but it only picks from 4 values because the 9 other values is simulated in another loop
-when it has been tried to
+when it has been tried to do different it fails
+- The guess and spin button have been implemented but not fully implemented.
+- Wanted to implement an order, so if you lose or gain a life you have to spin again until you get a point score so you can guess
+- Upper and lower cases need to be typed in directly like the word is in catagories.kt which I wanted to avoid but didn't find a solution
+- Flow of game
 */
 
 /**

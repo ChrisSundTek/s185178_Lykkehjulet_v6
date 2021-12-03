@@ -6,7 +6,7 @@
     app:startDestination="@id/start_screen">
     <fragment
         android:id="@+id/start_screen"
-        android:name="com.example.s185178lykkehjuletv6.Fragments.start_screen"
+        android:name="com.example.s185178lykkehjuletv6.fragments.Startscreen"
         android:label="start_screen_fragment"
         tools:layout="@layout/start_screen_fragment" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/game_won"
-        android:name="com.example.s185178lykkehjuletv6.Fragments.game_won"
+        android:name="com.example.s185178lykkehjuletv6.fragments.Gamewon"
         android:label="game_won_fragment"
         tools:layout="@layout/game_won_fragment" >
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/game_playing"
-        android:name="com.example.s185178lykkehjuletv6.Fragments.Game_playing"
+        android:name="com.example.s185178lykkehjuletv6.fragments.Gameplaying"
         android:label="game_playing_fragment"
         tools:layout="@layout/game_playing_fragment" >
         <action
@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/game_lost"
-        android:name="com.example.s185178lykkehjuletv6.Fragments.game_lost"
+        android:name="com.example.s185178lykkehjuletv6.fragments.Gamelost"
         android:label="game_lost_fragment"
         tools:layout="@layout/game_lost_fragment" >
         <action

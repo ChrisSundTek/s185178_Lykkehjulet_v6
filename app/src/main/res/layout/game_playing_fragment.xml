@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.Game_playing">
+    tools:context=".fragments.Gameplaying">
 
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:text="Score:"
+        android:text="@string/score"
         android:textColor="@color/black"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
-        android:text="Lifes:"
+        android:text="@string/lifes"
         android:textColor="@color/black"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -131,7 +131,7 @@
         android:id="@+id/catagory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your Catogory"
+        android:text="@string/your_catogory"
         app:layout_constraintTop_toBottomOf="@+id/wordToFind"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -140,14 +140,15 @@
         android:id="@+id/input_field"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:hint="Enter your letter"
+        android:hint="@string/enter_your_letter"
         android:inputType="text"
         android:maxLength="1"
         android:textAlignment="center"
         android:textColor="@color/Olive_Green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/catagory"/>
+        app:layout_constraintTop_toBottomOf="@id/catagory"
+        android:autofillHints="Write here" />
     <!-- Max length added to make player only guess 1 word at a time-->
 
     <Button
@@ -162,6 +163,8 @@
     <!-- TEXT on button has been removed here and added in viewModel -->
 
     <ImageView
+        android:id="@+id/wheel_image"
+        android:contentDescription="@string/picture_for_feeling_empty_space"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="80dp"

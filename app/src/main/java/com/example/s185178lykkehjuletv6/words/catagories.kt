@@ -1,5 +1,6 @@
-package com.example.s185178lykkehjuletv6.Words
+package com.example.s185178lykkehjuletv6.words
 
+// List with countries is taken from: https://github.com/usmaanz/Hangman/blob/master/app/src/main/java/com/usmaan/hangman/GameConstants.kt
 val categories: List<String> =
     listOf(
         "Countries",

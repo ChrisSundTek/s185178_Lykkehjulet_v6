@@ -5,14 +5,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.game_lost">
+    tools:context=".fragments.Gamelost">
 
     <TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
-        android:text="Game over"
+        android:text="@string/game_over"
         android:textColor="@color/Green"
         android:textSize="56sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,6 +21,7 @@
 
     <ImageView
         android:id="@+id/trophy"
+        android:contentDescription="@string/sad_emoji"
         android:layout_width="250dp"
         android:layout_height="200dp"
         android:layout_marginTop="50dp"
@@ -34,7 +35,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Play again"
+        android:text="@string/play_again"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

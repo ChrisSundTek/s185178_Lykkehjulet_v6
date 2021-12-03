@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Fragments.start_screen">
+    tools:context=".fragments.Startscreen">
 
     <!--Image from google-->
     <ImageView
         android:id="@+id/pic"
+        android:contentDescription="@string/banner_for_frontpage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/wheel_of_fortune"
@@ -22,7 +23,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Play"
+        android:text="@string/play"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

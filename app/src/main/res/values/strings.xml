@@ -6,4 +6,15 @@
     <string name="life_score">x</string>
     <string name="congrats">Congrats</string>
     <string name="result_from_spinning_wheel">Result from spinning wheel:</string>
+    <string name="play_again">Play again</string>
+    <string name="game_over">Game over</string>
+    <string name="sad_emoji">sad_emoji</string>
+    <string name="score">Score:</string>
+    <string name="lifes">Lifes:</string>
+    <string name="your_catogory">Your Catogory</string>
+    <string name="enter_your_letter">Enter your letter</string>
+    <string name="picture_for_feeling_empty_space">picture for feeling empty space</string>
+    <string name="trophy">trophy</string>
+    <string name="play">Play</string>
+    <string name="banner_for_frontpage">banner for frontpage</string>
 </resources>

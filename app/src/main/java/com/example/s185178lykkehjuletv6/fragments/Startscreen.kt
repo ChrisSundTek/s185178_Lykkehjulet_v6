@@ -1,36 +1,35 @@
-package com.example.s185178lykkehjuletv6.Fragments
+package com.example.s185178lykkehjuletv6.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.s185178lykkehjuletv6.R
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
-import com.example.s185178lykkehjuletv6.R
 
-
-class game_lost : Fragment() {
+class Startscreen : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.game_lost_fragment, container, false)
+        return inflater.inflate(R.layout.start_screen_fragment, container, false)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val clickListener = View.OnClickListener {
-            NextActivity()
+            startGame()
         }
-        val Playbutton = view.findViewById<Button>(R.id.Play_again)
-        Playbutton.setOnClickListener(clickListener)
-
+        val button = view.findViewById<Button>(R.id.play)
+        button.setOnClickListener(clickListener)
     }
-    private fun NextActivity(){
-        // Navigate to game or home screen
-        findNavController().navigate(R.id.action_game_lost_to_start_screen)
+    private fun startGame(){
+        // Navigate to Game
+        findNavController().navigate(R.id.action_start_screen_to_game_playing)
     }
 }
