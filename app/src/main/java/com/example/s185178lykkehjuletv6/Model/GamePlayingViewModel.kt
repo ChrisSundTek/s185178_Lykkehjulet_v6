@@ -98,7 +98,7 @@ class GamePlayingViewModel : ViewModel() {
     //Taken inspiration from a Dice roll simulation we made earlier this semester
     //Added true false state to add bankrupt to the wheel
     fun WheelSimulation(isPlayerBankrupt : Boolean) {
-// TODO: CHANGE HOW RADOM VALUE IS CHOOSEN
+
         if(isPlayerBankrupt == TRUE){
             _score.value = 0
         }

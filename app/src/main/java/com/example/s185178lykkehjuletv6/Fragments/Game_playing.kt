@@ -72,7 +72,7 @@ class Game_playing : Fragment() {
 
 //Implemented a double button instead https://developer.android.com/guide/topics/ui/controls/togglebutton
         if (_guessTheWord) {
-            //binding.Guess.visibility = View.INVISIBLE
+            binding.Guess.visibility = View.INVISIBLE
             binding.Guess.visibility = View.VISIBLE
             binding.Guess.text = "Spin the wheel"
 
@@ -87,10 +87,10 @@ class Game_playing : Fragment() {
     }
 
  // Restart game and then call StartGame to reset values
- /*   private fun restartGame() {
+    private fun restartGame() {
         viewModel.StartGame()
         updatescoreandlifecount()
-    }*/
+    }
 
     private fun exitGame() {
         activity?.finish()
