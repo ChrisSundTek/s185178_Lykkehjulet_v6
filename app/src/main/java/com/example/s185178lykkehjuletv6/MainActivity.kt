@@ -18,7 +18,7 @@ when it has been tried to do different it fails
 - The guess and spin button have been implemented but not fully implemented.
 - Wanted to implement an order, so if you lose or gain a life you have to spin again until you get a point score so you can guess
 - Upper and lower cases need to be typed in directly like the word is in catagories.kt which I wanted to avoid but didn't find a solution
-- Flow of game
+- Flow of game is not fully perfect but works after requirements
 */
 
 /**
